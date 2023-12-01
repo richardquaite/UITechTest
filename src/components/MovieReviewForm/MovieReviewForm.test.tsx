@@ -100,9 +100,6 @@ describe('MovieReviewForm', () => {
     const requestJson = await request.json();
     expect(requestJson.review).toEqual('400');
 
-    /**
-     * I'm not sure why this test takes so long
-     */
     await waitFor(() =>
       expect(getByText('Something went wrong')).toBeInTheDocument()
     );
