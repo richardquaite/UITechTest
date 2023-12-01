@@ -1,9 +1,20 @@
-import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Dialog,
+  Stack,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { useSelectedMovie } from '../../hooks/useSelectedMovie';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { usePostMovieReviewMutation } from '../../redux/apiSlice';
 import { useTemporaryMessage } from '../../hooks/useTemporaryMessage';
-import { useCallback } from 'react';
+import { PropsWithChildren, useCallback } from 'react';
+import { useTheme } from '@mui/material/styles';
+import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
 
 type FormValues = {
   review: string;
@@ -11,6 +22,9 @@ type FormValues = {
 
 export const MovieReviewForm = () => {
   const movie = useSelectedMovie();
+
+  const { setSelected, selected } = useSelectedQuerystring();
+
   const [postMovieReview, { isLoading, data: response }] =
     usePostMovieReviewMutation();
 
@@ -47,57 +61,85 @@ export const MovieReviewForm = () => {
     }
   }, []);
 
-  if (!movie) {
+  const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+
+  /**
+   * It would be nicer to pass this as a prop in a real world scenarion to provide
+   * more potential re-use, or it could be returned from a hook to provide the
+   * modal/inline functionality to more components
+   */
+  const WrappingComponent = useCallback(
+    ({ children }: PropsWithChildren) => {
+      if (matches || !selected) {
+        return <>{children}</>;
+      }
+      return (
+        <Dialog open onClose={() => setSelected(selected)}>
+          <Box padding={2}>{children}</Box>
+        </Dialog>
+      );
+    },
+    [matches, selected]
+  );
+
+  if (!movie || !selected) {
     return null;
   }
 
   const maxLengthHelperText = 'The maximum review length is 100 characters';
 
   return (
-    <Stack spacing={2}>
-      <Typography variant="h6" component="h2">
-        Please leave a review for {movie.title}
-      </Typography>
+    <WrappingComponent>
+      <Stack spacing={2}>
+        <Typography variant="h6" component="h2">
+          Please leave a review for {movie.title}
+        </Typography>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={2}>
-          {temporarySuccessMessage ? (
-            <Alert
-              severity="success"
-              sx={{ height: 114, alignItems: 'center' }}
-            >
-              {temporarySuccessMessage}
-            </Alert>
-          ) : temporaryErrorMessage ? (
-            <Alert severity="error" sx={{ height: 114, alignItems: 'center' }}>
-              {temporaryErrorMessage}
-            </Alert>
-          ) : (
-            <Stack spacing={2}>
-              <TextField
-                type="text"
-                label="Review"
-                {...register('review', {
-                  required: 'This field is required',
-                  maxLength: {
-                    value: 100,
-                    message: maxLengthHelperText,
-                  },
-                })}
-                error={Boolean(errors.review)}
-                helperText={
-                  (errors.review &&
-                    `${errors.review.message}.  You have entered ${values.review.length} characters.`) ??
-                  maxLengthHelperText
-                }
-              />
-              <Button type="submit" disabled={isLoading}>
-                {isLoading ? 'Please wait' : 'Submit'}
-              </Button>
-            </Stack>
-          )}
-        </Stack>
-      </form>
-    </Stack>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={2}>
+            {temporarySuccessMessage ? (
+              <Alert
+                severity="success"
+                sx={{ height: 114, alignItems: 'center' }}
+              >
+                {temporarySuccessMessage}
+              </Alert>
+            ) : temporaryErrorMessage ? (
+              <Alert
+                severity="error"
+                sx={{ height: 114, alignItems: 'center' }}
+              >
+                {temporaryErrorMessage}
+              </Alert>
+            ) : (
+              <Stack spacing={2}>
+                <TextField
+                  type="text"
+                  label="Review"
+                  {...register('review', {
+                    required: 'This field is required',
+                    maxLength: {
+                      value: 100,
+                      message: maxLengthHelperText,
+                    },
+                  })}
+                  error={Boolean(errors.review)}
+                  helperText={
+                    (errors.review &&
+                      `${errors.review.message}.  You have entered ${values.review.length} characters.`) ??
+                    maxLengthHelperText
+                  }
+                />
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? 'Please wait' : 'Submit'}
+                </Button>
+              </Stack>
+            )}
+          </Stack>
+        </form>
+      </Stack>
+    </WrappingComponent>
   );
 };

@@ -5,7 +5,7 @@ import GetMovies200 from '../../mocks/responses/GetMovies200';
 import { waitForRequest } from '../../mocks/node';
 import { API_ORIGIN } from '../../constants/constants';
 
-const id = '1';
+const id = GetMovies200[0].id;
 const movie = GetMovies200.find((movie) => movie.id === id);
 
 describe('MovieReviewForm', () => {

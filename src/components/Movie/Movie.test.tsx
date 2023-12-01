@@ -5,7 +5,7 @@ import GetMovies200 from '../../mocks/responses/GetMovies200';
 import GetMovieCompanies200 from '../../mocks/responses/GetMovieCompanies200';
 import { getAverage } from '../../lib/getAverage';
 
-const id = '1';
+const id = GetMovies200[0].id;
 const movie = GetMovies200.find((movie) => movie.id === id);
 const movieCompany = GetMovieCompanies200.find(
   (movieCompany) => movieCompany.id === movie?.filmCompanyId

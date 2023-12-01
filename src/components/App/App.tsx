@@ -1,27 +1,12 @@
 import { useMovies } from '../../hooks/useMovies';
 import { MovieReviewForm } from '../MovieReviewForm/MovieReviewForm';
 import { MoviesTable } from '../MoviesTable/MoviesTable';
-import {
-  Box,
-  Button,
-  Dialog,
-  Stack,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Button, Stack, Typography } from '@mui/material';
 import { ReloadButton } from '../ReloadButton/ReloadButton';
-import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
-import { useSelectedMovie } from '../../hooks/useSelectedMovie';
 import { PageTitle } from '../PageTitle/PageTitle';
 
 export const App = () => {
   const { isError, isFetching, refetch } = useMovies();
-  const { setSelected, selected } = useSelectedQuerystring();
-
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
-  const movie = useSelectedMovie();
 
   if (isError) {
     /**
@@ -48,17 +33,7 @@ export const App = () => {
 
       <MoviesTable />
 
-      {selected &&
-        movie &&
-        (matches ? (
-          <MovieReviewForm />
-        ) : (
-          <Dialog open onClose={() => setSelected(selected)}>
-            <Box padding={2}>
-              <MovieReviewForm />
-            </Box>
-          </Dialog>
-        ))}
+      <MovieReviewForm />
     </Stack>
   );
 };
