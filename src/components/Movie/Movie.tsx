@@ -1,6 +1,5 @@
 import { useMovie } from '@/src/hooks/useMovie';
 import {
-  Link,
   Rating,
   Stack,
   TableCell,
@@ -8,8 +7,10 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
+
 import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
 import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
+import { Link } from 'react-router-dom';
 
 export const MovieLoading = () => (
   <TableRow>
@@ -27,7 +28,7 @@ export const MovieNotFound = () => (
 
 export const Movie = ({ id }: { id: Movie['id'] }) => {
   const { movie, isLoading } = useMovie(id);
-  const { selected, setSelected } = useSelectedQuerystring();
+  const { selected, nextSelectedQuery } = useSelectedQuerystring();
 
   const isMdAndUp = useMdAndUpBreakpoint();
 
@@ -61,15 +62,7 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
     >
       <TableCell {...TableCellProps} component="th" scope="row">
         <Typography variant="h6" component="h2">
-          <Link
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setSelected(movie.id);
-            }}
-          >
-            {movie.title}
-          </Link>
+          <Link to={nextSelectedQuery(movie.id)}>{movie.title}</Link>
         </Typography>
       </TableCell>
       <TableCell {...TableCellProps}>

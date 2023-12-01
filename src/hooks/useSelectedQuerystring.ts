@@ -18,5 +18,18 @@ export const useSelectedQuerystring = () => {
     [selectedQuerystring, searchParams]
   );
 
-  return { selected: selectedQuerystring, setSelected };
+  const nextSelectedQuery = useCallback(
+    (id: Movie['id']) => {
+      const searchParamsCopy = new URLSearchParams(searchParams.toString());
+      if (selectedQuerystring === id) {
+        searchParamsCopy.delete('selected');
+      } else {
+        searchParamsCopy.set('selected', id);
+      }
+      return `?${searchParamsCopy.toString()}`;
+    },
+    [selectedQuerystring, searchParams]
+  );
+
+  return { selected: selectedQuerystring, setSelected, nextSelectedQuery };
 };
