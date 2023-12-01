@@ -24,8 +24,7 @@ export const MovieReviewForm = () => {
 
   const { setSelected, selected } = useSelectedQuerystring();
 
-  const [postMovieReview, { isLoading, data: response }] =
-    usePostMovieReviewMutation();
+  const [postMovieReview, { isLoading }] = usePostMovieReviewMutation();
 
   const {
     temporaryMessage: temporarySuccessMessage,

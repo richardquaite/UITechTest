@@ -1,4 +1,4 @@
-import { render, waitFor } from '../../utils/test-utils';
+import { render } from '../../utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { SortButton } from './SortButton';
 

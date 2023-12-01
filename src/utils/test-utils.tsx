@@ -1,9 +1,4 @@
-import {
-  render,
-  RenderOptions,
-  renderHook,
-  RenderHookResult,
-} from '@testing-library/react';
+import { render, RenderOptions } from '@testing-library/react';
 import { ReduxProvider } from '../components/ReduxProvider/ReduxProvider';
 import { store } from '../redux/store';
 import { BrowserRouter } from 'react-router-dom';

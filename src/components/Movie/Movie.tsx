@@ -1,6 +1,5 @@
 import { useMovie } from '../../hooks/useMovie';
 import {
-  Box,
   Rating,
   Stack,
   TableCell,
