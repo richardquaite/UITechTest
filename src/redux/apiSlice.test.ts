@@ -4,8 +4,8 @@ import {
   useGetMoviesQuery,
   usePostMovieReviewMutation,
 } from './apiSlice';
-import GetMovies200 from '../mocks/responses/GetMovies200.json';
-import GetMovieCompanies200 from '../mocks/responses/GetMovieCompanies200.json';
+import GetMovies200 from '../mocks/responses/GetMovies200';
+import GetMovieCompanies200 from '../mocks/responses/GetMovieCompanies200';
 import { waitForRequest } from '../mocks/node';
 import { API_ORIGIN } from '../constants/constants';
 

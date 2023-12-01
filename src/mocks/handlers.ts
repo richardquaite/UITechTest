@@ -1,13 +1,9 @@
 import { rest } from 'msw';
 
-import GetMovies200 from './responses/GetMovies200.json';
-import GetMovieCompanies200 from './responses/GetMovieCompanies200.json';
+import GetMovies200 from './responses/GetMovies200';
+import GetMovieCompanies200 from './responses/GetMovieCompanies200';
 import { API_ORIGIN } from '../constants/constants';
 
-/**
- * Annoyingly I can't share handlers between `src/mocks/handlers` and `.storybook/preview.tsx`
- * so they're copied between.
- */
 export const handlers = [
   rest.get(`${API_ORIGIN}/movies`, (req, res, ctx) => {
     return res(ctx.delay(200), ctx.json(GetMovies200));

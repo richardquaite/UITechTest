@@ -1,8 +1,8 @@
 import { render, waitFor } from '../../utils/test-utils';
 import { Movie } from './Movie';
 import { Table, TableBody } from '@mui/material';
-import GetMovies200 from '../../mocks/responses/GetMovies200.json';
-import GetMovieCompanies200 from '../../mocks/responses/GetMovieCompanies200.json';
+import GetMovies200 from '../../mocks/responses/GetMovies200';
+import GetMovieCompanies200 from '../../mocks/responses/GetMovieCompanies200';
 import { getAverage } from '../../lib/getAverage';
 
 const id = '1';

@@ -1,6 +1,6 @@
 import { render, waitFor } from '../../utils/test-utils';
 import { MoviesTable } from './MoviesTable';
-import GetMovies200 from '../../mocks/responses/GetMovies200.json';
+import GetMovies200 from '../../mocks/responses/GetMovies200';
 
 describe('MoviesTable', () => {
   test(`It displays the total number of movies`, async () => {

@@ -1,7 +1,7 @@
 import { render, waitFor } from '../../utils/test-utils';
 import userEvent from '@testing-library/user-event';
 import { MovieReviewForm } from './MovieReviewForm';
-import GetMovies200 from '../../mocks/responses/GetMovies200.json';
+import GetMovies200 from '../../mocks/responses/GetMovies200';
 import { waitForRequest } from '../../mocks/node';
 import { API_ORIGIN } from '../../constants/constants';
 
