@@ -12,10 +12,22 @@ export const AllTheProviders = ({ children }: PropsWithChildren) => {
   );
 };
 
-const customRender = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
-) => render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui: ReactElement, options?: RenderOptions) => {
+  return render(ui, {
+    ...options,
+    wrapper:
+      typeof options?.wrapper !== 'undefined'
+        ? ({ children }) => {
+            const Wrapper = options.wrapper!;
+            return (
+              <AllTheProviders>
+                <Wrapper>{children}</Wrapper>
+              </AllTheProviders>
+            );
+          }
+        : AllTheProviders,
+  });
+};
 
 export * from '@testing-library/react';
 export { customRender as render };
