@@ -1,5 +1,13 @@
 import { useMovie } from '../../hooks/useMovie';
-import { Rating, Stack, TableCell, TableRow, Typography } from '@mui/material';
+import {
+  Box,
+  Rating,
+  Stack,
+  TableCell,
+  TableCellProps,
+  TableRow,
+  Typography,
+} from '@mui/material';
 import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
 import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
 
@@ -33,27 +41,42 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
 
   const hasReviews = movie.reviews.length > 0;
 
+  const TableCellProps: TableCellProps = isMdAndUp
+    ? {}
+    : {
+        sx: {
+          display: 'block',
+          borderBottom: 'none',
+          paddingTop: '8px',
+          paddingBottom: '8px',
+        },
+      };
+
   return (
     <TableRow
       onClick={() => setSelected(movie.id)}
       sx={{
+        borderBottom: '1px solid rgba(224, 224, 224, 1)',
         cursor: 'pointer',
         backgroundColor: selected === movie.id ? 'lightblue' : undefined,
       }}
     >
-      <TableCell>{movie.title}</TableCell>
-      <TableCell>
+      <TableCell {...TableCellProps} component="th" scope="row">
+        <Typography variant="h6" component="h2">
+          {movie.title}
+        </Typography>
+      </TableCell>
+      <TableCell {...TableCellProps}>
         <Stack spacing={2} direction="row">
           {hasReviews ? (
             <>
-              {isMdAndUp && (
-                <Rating
-                  readOnly
-                  value={movie.averageReviewScore}
-                  precision={0.1}
-                  max={10}
-                />
-              )}
+              <Rating
+                readOnly
+                value={movie.averageReviewScore}
+                precision={0.1}
+                max={10}
+                size={isMdAndUp ? 'medium' : 'small'}
+              />
               <Typography>{movie.averageReviewScore}</Typography>
             </>
           ) : (
@@ -61,7 +84,9 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
           )}
         </Stack>
       </TableCell>
-      <TableCell>{movie.filmCompany?.name ?? '-'}</TableCell>
+      <TableCell {...TableCellProps}>
+        {movie.filmCompany?.name ?? '-'}
+      </TableCell>
     </TableRow>
   );
 };
