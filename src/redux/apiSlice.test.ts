@@ -1,4 +1,4 @@
-import { AllTheProviders, act, renderHook, waitFor } from 'test-utils';
+import { act, renderHook, waitFor } from 'test-utils';
 import {
   useGetMovieCompaniesQuery,
   useGetMoviesQuery,
@@ -11,9 +11,7 @@ import { API_ORIGIN } from '@/src/constants/constants';
 
 describe('apiSlice', () => {
   test('getMovies returns loading states and results', async () => {
-    const { result } = renderHook(() => useGetMoviesQuery(), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(() => useGetMoviesQuery());
 
     expect(result.current.data).toBeUndefined();
     expect(result.current.isLoading).toBe(true);
@@ -26,9 +24,7 @@ describe('apiSlice', () => {
   });
 
   test('getMovieCompanies returns loading states and results', async () => {
-    const { result } = renderHook(() => useGetMovieCompaniesQuery(), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(() => useGetMovieCompaniesQuery());
 
     expect(result.current.data).toBeUndefined();
     expect(result.current.isLoading).toBe(true);
@@ -43,9 +39,7 @@ describe('apiSlice', () => {
   it('usePostMovieReviewMutation returns loading states and result', async () => {
     const payload = { review: 'Some review' };
     const pendingRequest = waitForRequest('POST', `${API_ORIGIN}/submitReview`);
-    const { result } = renderHook(() => usePostMovieReviewMutation(), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(() => usePostMovieReviewMutation());
 
     const [postMovieReview, initialResponse] = result.current;
     expect(initialResponse.data).toBeUndefined();
@@ -72,9 +66,7 @@ describe('apiSlice', () => {
   it('usePostMovieReviewMutation returns errors', async () => {
     const payload = { review: '400' };
     const pendingRequest = waitForRequest('POST', `${API_ORIGIN}/submitReview`);
-    const { result } = renderHook(() => usePostMovieReviewMutation(), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(() => usePostMovieReviewMutation());
 
     const [postMovieReview, initialResponse] = result.current;
     expect(initialResponse.data).toBeUndefined();

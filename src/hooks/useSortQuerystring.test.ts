@@ -1,11 +1,9 @@
-import { AllTheProviders, renderHook, waitFor } from 'test-utils';
+import { renderHook, waitFor } from 'test-utils';
 import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 
 describe('useSortQuerystring', () => {
   test('cycles through the sort options', async () => {
-    const { result } = renderHook(() => useSortQuerystring(), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(useSortQuerystring);
     await waitFor(() => expect(result.current.sort).toBeUndefined());
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get('sort')).toBeNull()
@@ -37,9 +35,7 @@ describe('useSortQuerystring', () => {
   test('allows a sortKey argument to define the querystring key', async () => {
     const sortKey = 'myUniqueSortKey';
 
-    const { result } = renderHook(() => useSortQuerystring(sortKey), {
-      wrapper: AllTheProviders,
-    });
+    const { result } = renderHook(() => useSortQuerystring(sortKey));
     await waitFor(() => expect(result.current.sort).toBeUndefined());
     await waitFor(() =>
       expect(
