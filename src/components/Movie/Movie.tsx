@@ -1,5 +1,6 @@
 import { useMovie } from '@/src/hooks/useMovie';
 import {
+  Link,
   Rating,
   Stack,
   TableCell,
@@ -53,16 +54,22 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
 
   return (
     <TableRow
-      onClick={() => setSelected(movie.id)}
       sx={{
         borderBottom: '1px solid rgba(224, 224, 224, 1)',
-        cursor: 'pointer',
         backgroundColor: selected === movie.id ? 'lightblue' : undefined,
       }}
     >
       <TableCell {...TableCellProps} component="th" scope="row">
         <Typography variant="h6" component="h2">
-          {movie.title}
+          <Link
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelected(movie.id);
+            }}
+          >
+            {movie.title}
+          </Link>
         </Typography>
       </TableCell>
       <TableCell {...TableCellProps}>
