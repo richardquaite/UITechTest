@@ -4,9 +4,11 @@ import { MoviesTable } from '@/src/components/MoviesTable/MoviesTable';
 import { Button, Stack, Typography } from '@mui/material';
 import { ReloadButton } from '@/src/components/ReloadButton/ReloadButton';
 import { PageTitle } from '@/src/components/PageTitle/PageTitle';
+import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
 
 export const App = () => {
   const { isError, isFetching, refetch } = useMovies();
+  const { selected: selectedMovieId } = useSelectedQuerystring();
 
   if (isError) {
     /**
@@ -33,7 +35,7 @@ export const App = () => {
 
       <MoviesTable />
 
-      <MovieReviewForm />
+      {selectedMovieId && <MovieReviewForm />}
     </Stack>
   );
 };
