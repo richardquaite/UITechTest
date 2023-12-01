@@ -5,10 +5,9 @@ import GetMovies200 from '../../mocks/responses/GetMovies200';
 import GetMovieCompanies200 from '../../mocks/responses/GetMovieCompanies200';
 import { getAverage } from '../../lib/getAverage';
 
-const id = GetMovies200[0].id;
-const movie = GetMovies200.find((movie) => movie.id === id);
+const movie = GetMovies200[0];
 const movieCompany = GetMovieCompanies200.find(
-  (movieCompany) => movieCompany.id === movie?.filmCompanyId
+  (movieCompany) => movieCompany.id === movie.filmCompanyId
 );
 
 describe('Movie', () => {
@@ -24,7 +23,7 @@ describe('Movie', () => {
     const { getAllByText } = render(
       <Table>
         <TableBody>
-          <Movie id={id} />
+          <Movie id={movie.id} />
         </TableBody>
       </Table>
     );
@@ -50,7 +49,7 @@ describe('Movie', () => {
     const { getByText } = render(
       <Table>
         <TableBody>
-          <Movie id={id} />
+          <Movie id={movie.id} />
         </TableBody>
       </Table>
     );
@@ -62,7 +61,7 @@ describe('Movie', () => {
     const { getByText } = render(
       <Table>
         <TableBody>
-          <Movie id={id} />
+          <Movie id={movie.id} />
         </TableBody>
       </Table>
     );
@@ -97,7 +96,7 @@ describe('Movie', () => {
     const { getByText } = render(
       <Table>
         <TableBody>
-          <Movie id={id} />
+          <Movie id={movie.id} />
         </TableBody>
       </Table>
     );
