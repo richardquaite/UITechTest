@@ -1,16 +1,7 @@
 import { useMovie } from '../../hooks/useMovie';
-import {
-  Button,
-  Link,
-  Rating,
-  Stack,
-  TableCell,
-  TableRow,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Rating, Stack, TableCell, TableRow, Typography } from '@mui/material';
 import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
+import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
 
 export const MovieLoading = () => (
   <TableRow>
@@ -30,8 +21,7 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
   const { movie, isLoading } = useMovie(id);
   const { selected, setSelected } = useSelectedQuerystring();
 
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isMdAndUp = useMdAndUpBreakpoint();
 
   if (!movie && isLoading) {
     return <MovieLoading />;
@@ -56,7 +46,7 @@ export const Movie = ({ id }: { id: Movie['id'] }) => {
         <Stack spacing={2} direction="row">
           {hasReviews ? (
             <>
-              {matches && (
+              {isMdAndUp && (
                 <Rating
                   readOnly
                   value={movie.averageReviewScore}

@@ -6,15 +6,14 @@ import {
   Stack,
   TextField,
   Typography,
-  useMediaQuery,
 } from '@mui/material';
 import { useSelectedMovie } from '../../hooks/useSelectedMovie';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { usePostMovieReviewMutation } from '../../redux/apiSlice';
 import { useTemporaryMessage } from '../../hooks/useTemporaryMessage';
 import { PropsWithChildren, useCallback } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
+import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
 
 type FormValues = {
   review: string;
@@ -61,9 +60,7 @@ export const MovieReviewForm = () => {
     }
   }, []);
 
-  const theme = useTheme();
-
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const isMdAndUp = useMdAndUpBreakpoint();
 
   /**
    * It would be nicer to pass this as a prop in a real world scenarion to provide
@@ -72,7 +69,7 @@ export const MovieReviewForm = () => {
    */
   const WrappingComponent = useCallback(
     ({ children }: PropsWithChildren) => {
-      if (matches || !selected) {
+      if (isMdAndUp || !selected) {
         return <>{children}</>;
       }
       return (
@@ -81,7 +78,7 @@ export const MovieReviewForm = () => {
         </Dialog>
       );
     },
-    [matches, selected]
+    [isMdAndUp, selected]
   );
 
   if (!movie || !selected) {
