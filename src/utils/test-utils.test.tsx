@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { render, waitFor } from 'test-utils';
 import { useMovies } from '@/src/hooks/useMovies';
-import GetMovies200 from '../mocks/responses/GetMovies200';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
 
 const SomeComponent = () => <h1>Component heading</h1>;
 const SomeWrapper = ({ children }: PropsWithChildren) => {

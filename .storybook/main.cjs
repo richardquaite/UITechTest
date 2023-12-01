@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-interactions',
     '@storybook/addon-mdx-gfm',
     'storybook-addon-react-router-v6',
+    '@storybook/addon-a11y',
   ],
 
   framework: {
