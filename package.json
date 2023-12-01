@@ -9,7 +9,7 @@
     "preview": "vite preview --port 3001 --host",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "storybook": "storybook dev -s public",
+    "storybook": "storybook dev -s public -p 3002",
     "build-storybook": "storybook build"
   },
   "dependencies": {
