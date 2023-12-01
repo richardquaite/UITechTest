@@ -18,7 +18,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "test-utils": ["./src/utils/test-utils"]
     }
   },
   "include": ["src", "./types/api.d.ts"],

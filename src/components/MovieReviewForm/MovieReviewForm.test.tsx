@@ -1,4 +1,4 @@
-import { render, waitFor } from '@/src/utils/test-utils';
+import { render, waitFor } from 'test-utils';
 import userEvent from '@testing-library/user-event';
 import { MovieReviewForm } from '@/src/components/MovieReviewForm/MovieReviewForm';
 import GetMovies200 from '@/src/mocks/responses/GetMovies200';

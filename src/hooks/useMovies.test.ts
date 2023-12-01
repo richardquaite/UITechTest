@@ -1,4 +1,4 @@
-import { AllTheProviders, renderHook, waitFor } from '@/src/utils/test-utils';
+import { AllTheProviders, renderHook, waitFor } from 'test-utils';
 import { useMovies } from '@/src/hooks/useMovies';
 import GetMovies200 from '@/src/mocks/responses/GetMovies200';
 

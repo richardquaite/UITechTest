@@ -1,9 +1,4 @@
-import {
-  AllTheProviders,
-  act,
-  renderHook,
-  waitFor,
-} from '@/src/utils/test-utils';
+import { AllTheProviders, act, renderHook, waitFor } from 'test-utils';
 import {
   useGetMovieCompaniesQuery,
   useGetMoviesQuery,

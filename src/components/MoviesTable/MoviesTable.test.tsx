@@ -1,4 +1,4 @@
-import { render, waitFor } from '@/src/utils/test-utils';
+import { render, waitFor } from 'test-utils';
 import { MoviesTable } from '@/src/components/MoviesTable/MoviesTable';
 import GetMovies200 from '@/src/mocks/responses/GetMovies200';
 
