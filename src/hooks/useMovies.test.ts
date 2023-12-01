@@ -1,6 +1,6 @@
-import { AllTheProviders, renderHook, waitFor } from '../utils/test-utils';
-import { useMovies } from './useMovies';
-import GetMovies200 from '../mocks/responses/GetMovies200';
+import { AllTheProviders, renderHook, waitFor } from '@/src/utils/test-utils';
+import { useMovies } from '@/src/hooks/useMovies';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
 
 describe('useMovies', () => {
   test('returns movies', async () => {

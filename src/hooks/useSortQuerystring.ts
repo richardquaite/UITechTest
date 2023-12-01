@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SORT_KEYS } from '../constants/constants';
+import { SORT_KEYS } from '@/src/constants/constants';
 
 type SortTuple = typeof SORT_KEYS;
 type Sort = SortTuple[number] | undefined;

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { MoviesTable } from './MoviesTable';
+import { MoviesTable } from '@/src/components/MoviesTable/MoviesTable';
 
 const meta: Meta<typeof MoviesTable> = {
   title: 'MoviesTable',

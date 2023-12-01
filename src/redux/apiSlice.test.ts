@@ -1,13 +1,18 @@
-import { AllTheProviders, act, renderHook, waitFor } from '../utils/test-utils';
+import {
+  AllTheProviders,
+  act,
+  renderHook,
+  waitFor,
+} from '@/src/utils/test-utils';
 import {
   useGetMovieCompaniesQuery,
   useGetMoviesQuery,
   usePostMovieReviewMutation,
-} from './apiSlice';
-import GetMovies200 from '../mocks/responses/GetMovies200';
-import GetMovieCompanies200 from '../mocks/responses/GetMovieCompanies200';
-import { waitForRequest } from '../mocks/node';
-import { API_ORIGIN } from '../constants/constants';
+} from '@/src/redux/apiSlice';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
+import GetMovieCompanies200 from '@/src/mocks/responses/GetMovieCompanies200';
+import { waitForRequest } from '@/src/mocks/node';
+import { API_ORIGIN } from '@/src/constants/constants';
 
 describe('apiSlice', () => {
   test('getMovies returns loading states and results', async () => {

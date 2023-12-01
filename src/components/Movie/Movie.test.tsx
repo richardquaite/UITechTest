@@ -1,9 +1,9 @@
-import { render, waitFor } from '../../utils/test-utils';
-import { Movie } from './Movie';
+import { render, waitFor } from '@/src/utils/test-utils';
+import { Movie } from '@/src/components/Movie/Movie';
 import { Table, TableBody } from '@mui/material';
-import GetMovies200 from '../../mocks/responses/GetMovies200';
-import GetMovieCompanies200 from '../../mocks/responses/GetMovieCompanies200';
-import { getAverage } from '../../lib/getAverage';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
+import GetMovieCompanies200 from '@/src/mocks/responses/GetMovieCompanies200';
+import { getAverage } from '@/src/lib/getAverage';
 
 const movie = GetMovies200[0];
 const movieCompany = GetMovieCompanies200.find(

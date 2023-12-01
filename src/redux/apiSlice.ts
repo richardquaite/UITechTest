@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
-import { API_ORIGIN } from '../constants/constants';
+import { API_ORIGIN } from '@/src/constants/constants';
 
 const staggeredBaseQuery = retry(fetchBaseQuery({ baseUrl: API_ORIGIN }), {
   maxRetries: 3,

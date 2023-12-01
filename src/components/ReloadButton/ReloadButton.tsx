@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useMovies } from '../../hooks/useMovies';
+import { useMovies } from '@/src/hooks/useMovies';
 
 export const ReloadButton = () => {
   const { refetch, isFetching } = useMovies();

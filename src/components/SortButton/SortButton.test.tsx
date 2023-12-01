@@ -1,6 +1,6 @@
-import { render } from '../../utils/test-utils';
+import { render } from '@/src/utils/test-utils';
 import userEvent from '@testing-library/user-event';
-import { SortButton } from './SortButton';
+import { SortButton } from '@/src/components/SortButton/SortButton';
 
 const getSortQuery = () =>
   new URLSearchParams(window.location.search).get('sort');

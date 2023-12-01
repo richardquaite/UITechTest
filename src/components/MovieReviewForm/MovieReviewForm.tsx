@@ -7,13 +7,13 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useSelectedMovie } from '../../hooks/useSelectedMovie';
+import { useSelectedMovie } from '@/src/hooks/useSelectedMovie';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { usePostMovieReviewMutation } from '../../redux/apiSlice';
-import { useTemporaryMessage } from '../../hooks/useTemporaryMessage';
+import { usePostMovieReviewMutation } from '@/src/redux/apiSlice';
+import { useTemporaryMessage } from '@/src/hooks/useTemporaryMessage';
 import { PropsWithChildren, useCallback } from 'react';
-import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
-import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
+import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
+import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 
 type FormValues = {
   review: string;

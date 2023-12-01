@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 import {
   useGetMovieCompaniesQuery,
   useGetMoviesQuery,
-} from '../redux/apiSlice';
-import { useSortQuerystring } from './useSortQuerystring';
-import { getAverage } from '../lib/getAverage';
+} from '@/src/redux/apiSlice';
+import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
+import { getAverage } from '@/src/lib/getAverage';
 
 type ExtendedMovie = Movie & {
   filmCompany: MovieCompany | undefined;

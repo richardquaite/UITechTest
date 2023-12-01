@@ -1,4 +1,4 @@
-import { getAverage } from './getAverage';
+import { getAverage } from '@/src/lib/getAverage';
 
 describe('getAverage', () => {
   test('It calculates an average', () => {

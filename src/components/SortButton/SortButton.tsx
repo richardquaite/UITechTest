@@ -1,6 +1,6 @@
 import { ExpandLess, ExpandMore, UnfoldMore } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { useSortQuerystring } from '../../hooks/useSortQuerystring';
+import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 
 export const SortButton = () => {
   const { sort, setSorting } = useSortQuerystring();

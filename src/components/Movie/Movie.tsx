@@ -1,4 +1,4 @@
-import { useMovie } from '../../hooks/useMovie';
+import { useMovie } from '@/src/hooks/useMovie';
 import {
   Rating,
   Stack,
@@ -7,8 +7,8 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { useSelectedQuerystring } from '../../hooks/useSelectedQuerystring';
-import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
+import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
+import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 
 export const MovieLoading = () => (
   <TableRow>

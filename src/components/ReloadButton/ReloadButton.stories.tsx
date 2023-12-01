@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { ReloadButton } from './ReloadButton';
+import { ReloadButton } from '@/src/components/ReloadButton/ReloadButton';
 
 const meta: Meta<typeof ReloadButton> = {
   title: 'ReloadButton',

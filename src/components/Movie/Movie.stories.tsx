@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Movie } from './Movie';
-import GetMovies200 from '../../mocks/responses/GetMovies200';
+import { Movie } from '@/src/components/Movie/Movie';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
 
 const meta: Meta<typeof Movie> = {
   title: 'Movie',

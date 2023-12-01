@@ -1,9 +1,9 @@
-import { render, waitFor } from '../../utils/test-utils';
+import { render, waitFor } from '@/src/utils/test-utils';
 import userEvent from '@testing-library/user-event';
-import { MovieReviewForm } from './MovieReviewForm';
-import GetMovies200 from '../../mocks/responses/GetMovies200';
-import { waitForRequest } from '../../mocks/node';
-import { API_ORIGIN } from '../../constants/constants';
+import { MovieReviewForm } from '@/src/components/MovieReviewForm/MovieReviewForm';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
+import { waitForRequest } from '@/src/mocks/node';
+import { API_ORIGIN } from '@/src/constants/constants';
 
 const movie = GetMovies200[0];
 

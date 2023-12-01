@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useMovies } from './useMovies';
+import { useMovies } from '@/src/hooks/useMovies';
 
 export const useMovie = (id: Movie['id'] | null) => {
   if (!id) {

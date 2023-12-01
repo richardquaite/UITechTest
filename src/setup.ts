@@ -1,7 +1,7 @@
 import 'cross-fetch/polyfill';
 import '@testing-library/jest-dom';
 import { beforeAll, afterEach, afterAll } from 'vitest';
-import { server } from './mocks/node';
+import { server } from '@/src/mocks/node';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

@@ -1,5 +1,5 @@
-import { useMovies } from '../../hooks/useMovies';
-import { Movie, MovieLoading } from '../Movie/Movie';
+import { useMovies } from '@/src/hooks/useMovies';
+import { Movie, MovieLoading } from '@/src/components/Movie/Movie';
 import {
   Stack,
   Table,
@@ -10,8 +10,8 @@ import {
   TableHeadProps,
   TableRow,
 } from '@mui/material';
-import { SortButton } from '../SortButton/SortButton';
-import { useMdAndUpBreakpoint } from '../../hooks/useMdAndUpBreakpoint';
+import { SortButton } from '@/src/components/SortButton/SortButton';
+import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 
 export const MoviesTable = () => {
   const {

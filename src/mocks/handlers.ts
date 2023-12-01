@@ -1,8 +1,8 @@
 import { rest } from 'msw';
 
-import GetMovies200 from './responses/GetMovies200';
-import GetMovieCompanies200 from './responses/GetMovieCompanies200';
-import { API_ORIGIN } from '../constants/constants';
+import GetMovies200 from '@/src/mocks/responses/GetMovies200';
+import GetMovieCompanies200 from '@/src/mocks/responses/GetMovieCompanies200';
+import { API_ORIGIN } from '@/src/constants/constants';
 
 export const handlers = [
   rest.get(`${API_ORIGIN}/movies`, (req, res, ctx) => {

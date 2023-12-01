@@ -1,5 +1,5 @@
-import { AllTheProviders, renderHook, waitFor } from '../utils/test-utils';
-import { useSortQuerystring } from './useSortQuerystring';
+import { AllTheProviders, renderHook, waitFor } from '@/src/utils/test-utils';
+import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 
 describe('useSortQuerystring', () => {
   test('cycles through the sort options', async () => {
