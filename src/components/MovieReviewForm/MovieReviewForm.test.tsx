@@ -103,9 +103,8 @@ describe('MovieReviewForm', () => {
     /**
      * I'm not sure why this test takes so long
      */
-    await waitFor(
-      () => expect(getByText('Something went wrong')).toBeInTheDocument(),
-      { timeout: 10000 }
+    await waitFor(() =>
+      expect(getByText('Something went wrong')).toBeInTheDocument()
     );
   });
 });
