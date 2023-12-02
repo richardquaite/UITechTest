@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from 'test-utils';
+import { act, renderHook, waitFor } from 'test-utils';
 import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 
 describe('useSortQuerystring', () => {
@@ -9,7 +9,7 @@ describe('useSortQuerystring', () => {
       expect(new URLSearchParams(window.location.search).get('sort')).toBeNull()
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toEqual('desc'));
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get('sort')).toEqual(
@@ -17,7 +17,7 @@ describe('useSortQuerystring', () => {
       )
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toEqual('asc'));
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get('sort')).toEqual(
@@ -25,7 +25,7 @@ describe('useSortQuerystring', () => {
       )
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toBeUndefined());
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get('sort')).toBeNull()
@@ -43,7 +43,7 @@ describe('useSortQuerystring', () => {
       ).toBeNull()
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toEqual('desc'));
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get(sortKey)).toEqual(
@@ -51,7 +51,7 @@ describe('useSortQuerystring', () => {
       )
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toEqual('asc'));
     await waitFor(() =>
       expect(new URLSearchParams(window.location.search).get(sortKey)).toEqual(
@@ -59,7 +59,7 @@ describe('useSortQuerystring', () => {
       )
     );
 
-    result.current.setSorting();
+    act(() => result.current.setSorting());
     await waitFor(() => expect(result.current.sort).toBeUndefined());
     await waitFor(() =>
       expect(
