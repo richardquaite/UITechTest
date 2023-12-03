@@ -26,7 +26,7 @@ export const MovieNotFound = () => (
   </TableRow>
 );
 
-export const Movie = ({ id }: { id: Movie['id'] }) => {
+export const Movie = ({ id }: { id: MovieEntity['id'] }) => {
   const { movie, isLoading } = useMovie(id);
   const { value: selected, nextQuerystring: nextSelectedQuery } =
     useToggleQuerystringValue('selected');

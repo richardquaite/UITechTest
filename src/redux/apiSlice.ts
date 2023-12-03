@@ -10,12 +10,12 @@ export const apiSlice = createApi({
   tagTypes: ['Movie', 'MovieCompany'],
   baseQuery: staggeredBaseQuery,
   endpoints: (build) => ({
-    getMovies: build.query<Movie[], void>({
+    getMovies: build.query<MovieEntity[], void>({
       query: () => `/movies`,
       providesTags: () => [{ type: 'Movie', id: 'LIST' }],
     }),
 
-    getMovieCompanies: build.query<MovieCompany[], void>({
+    getMovieCompanies: build.query<MovieCompanyEntity[], void>({
       query: () => `/movieCompanies`,
       providesTags: () => [{ type: 'MovieCompany', id: 'LIST' }],
     }),

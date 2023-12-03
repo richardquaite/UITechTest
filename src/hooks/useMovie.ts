@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useMovies } from '@/src/hooks/useMovies';
 
-export const useMovie = (id: Movie['id'] | null) => {
+export const useMovie = (id: MovieEntity['id'] | null) => {
   if (!id) {
     console.warn('Attempted to call `useMovie` without providing an id');
   }

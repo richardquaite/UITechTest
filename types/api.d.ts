@@ -1,10 +1,15 @@
-type MovieCompany = { id: string; name: string };
+type Entity = {
+  id: string;
+};
+
+type MovieCompany = { name: string };
+interface MovieCompanyEntity extends MovieCompany, Entity {}
 
 type Movie = {
-  id: string;
   reviews: number[];
   title: string;
-  filmCompanyId: MovieCompany['id'];
+  filmCompanyId: MovieCompanyEntity['id'];
   cost: number;
   releaseYear: number;
 };
+interface MovieEntity extends Movie, Entity {}

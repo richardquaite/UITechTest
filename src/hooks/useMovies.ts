@@ -6,8 +6,8 @@ import {
 import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 import { getAverage } from '@/src/lib/getAverage';
 
-type ExtendedMovie = Movie & {
-  filmCompany: MovieCompany | undefined;
+type ExtendedMovie = MovieEntity & {
+  filmCompany: MovieCompanyEntity | undefined;
   averageReviewScore: number;
 };
 

@@ -1,4 +1,4 @@
-const GetMovies200: Movie[] = [
+const GetMovies200: MovieEntity[] = [
   {
     id: '1',
     reviews: [6, 8, 7, 9, 8, 7, 8],
