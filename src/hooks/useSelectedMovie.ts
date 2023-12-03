@@ -1,8 +1,8 @@
 import { useMovie } from '@/src/hooks/useMovie';
-import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
+import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
 
 export const useSelectedMovie = () => {
-  const { selected } = useSelectedQuerystring();
+  const { value: selected } = useToggleQuerystringValue('selected');
 
   const { movie } = useMovie(selected);
 

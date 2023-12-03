@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
+import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
 import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,8 @@ export const MovieNotFound = () => (
 
 export const Movie = ({ id }: { id: Movie['id'] }) => {
   const { movie, isLoading } = useMovie(id);
-  const { selected, nextSelectedQuery } = useSelectedQuerystring();
+  const { value: selected, nextQuerystring: nextSelectedQuery } =
+    useToggleQuerystringValue('selected');
 
   const isMdAndUp = useMdAndUpBreakpoint();
 

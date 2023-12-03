@@ -12,7 +12,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { usePostMovieReviewMutation } from '@/src/redux/apiSlice';
 import { useTemporaryMessage } from '@/src/hooks/useTemporaryMessage';
 import { PropsWithChildren, useCallback } from 'react';
-import { useSelectedQuerystring } from '@/src/hooks/useSelectedQuerystring';
+import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
 import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 
 type FormValues = {
@@ -22,7 +22,8 @@ type FormValues = {
 export const MovieReviewForm = () => {
   const movie = useSelectedMovie();
 
-  const { setSelected, selected } = useSelectedQuerystring();
+  const { setQuerystring: setSelected, value: selected } =
+    useToggleQuerystringValue('selected');
 
   const [postMovieReview, { isLoading }] = usePostMovieReviewMutation();
 
