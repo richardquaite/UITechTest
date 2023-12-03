@@ -14,6 +14,7 @@ import { useTemporaryMessage } from '@/src/hooks/useTemporaryMessage';
 import { PropsWithChildren, useCallback } from 'react';
 import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
 import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
+import { SELECTED_MOVIE_ID_QUERYSTRING_KEY } from '@/src/constants/constants';
 
 type FormValues = {
   review: string;
@@ -23,19 +24,15 @@ export const MovieReviewForm = () => {
   const movie = useSelectedMovie();
 
   const { setQuerystring: setSelected, value: selected } =
-    useToggleQuerystringValue('selected');
+    useToggleQuerystringValue(SELECTED_MOVIE_ID_QUERYSTRING_KEY);
 
   const [postMovieReview, { isLoading }] = usePostMovieReviewMutation();
 
-  const {
-    temporaryMessage: temporarySuccessMessage,
-    setTemporaryMessage: setTemporarySuccessMessage,
-  } = useTemporaryMessage();
+  const { message: successMessage, setMessage: setSuccessMessage } =
+    useTemporaryMessage();
 
-  const {
-    temporaryMessage: temporaryErrorMessage,
-    setTemporaryMessage: setTemporaryErrorMessage,
-  } = useTemporaryMessage();
+  const { message: errorMessage, setMessage: setErrorMessage } =
+    useTemporaryMessage();
 
   const {
     register,
@@ -50,13 +47,13 @@ export const MovieReviewForm = () => {
   const onSubmit: SubmitHandler<FormValues> = useCallback(async (data) => {
     try {
       const { message } = await postMovieReview(data).unwrap();
-      setTemporarySuccessMessage(message);
+      setSuccessMessage(message);
       reset();
     } catch (e) {
       // Given an error response shape, we can map the field's keys, calling `setError`
       // from react-hook-form to programatically set each field's isInvalid state and
       // set it's error message.  But for now...
-      setTemporaryErrorMessage('Something went wrong');
+      setErrorMessage('Something went wrong');
     }
   }, []);
 
@@ -96,19 +93,19 @@ export const MovieReviewForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
-            {temporarySuccessMessage ? (
+            {successMessage ? (
               <Alert
                 severity="success"
                 sx={{ height: 114, alignItems: 'center' }}
               >
-                {temporarySuccessMessage}
+                {successMessage}
               </Alert>
-            ) : temporaryErrorMessage ? (
+            ) : errorMessage ? (
               <Alert
                 severity="error"
                 sx={{ height: 114, alignItems: 'center' }}
               >
-                {temporaryErrorMessage}
+                {errorMessage}
               </Alert>
             ) : (
               <Stack spacing={2}>

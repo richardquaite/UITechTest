@@ -5,10 +5,13 @@ import { Button, Stack, Typography } from '@mui/material';
 import { ReloadButton } from '@/src/components/ReloadButton/ReloadButton';
 import { PageTitle } from '@/src/components/PageTitle/PageTitle';
 import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
+import { SELECTED_MOVIE_ID_QUERYSTRING_KEY } from '@/src/constants/constants';
 
 export const App = () => {
   const { isError, isFetching, refetch } = useMovies();
-  const { value: selectedMovieId } = useToggleQuerystringValue('selected');
+  const { value: selectedMovieId } = useToggleQuerystringValue(
+    SELECTED_MOVIE_ID_QUERYSTRING_KEY
+  );
 
   if (isError) {
     /**

@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
 export const useTemporaryMessage = (timeout = 4000) => {
-  const [temporaryMessage, setTemporaryMessage] = useState('');
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (temporaryMessage) {
-        setTemporaryMessage('');
+      if (message) {
+        setMessage('');
       }
     }, timeout);
     return () => clearTimeout(timer);
-  }, [temporaryMessage]);
+  }, [message]);
 
-  return { temporaryMessage, setTemporaryMessage };
+  return { message, setMessage };
 };

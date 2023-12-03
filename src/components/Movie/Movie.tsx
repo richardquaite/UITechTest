@@ -11,6 +11,7 @@ import {
 import { useToggleQuerystringValue } from '@/src/hooks/useToggleQuerystringValue';
 import { useMdAndUpBreakpoint } from '@/src/hooks/useMdAndUpBreakpoint';
 import { Link } from 'react-router-dom';
+import { SELECTED_MOVIE_ID_QUERYSTRING_KEY } from '@/src/constants/constants';
 
 export const MovieLoading = () => (
   <TableRow>
@@ -29,7 +30,7 @@ export const MovieNotFound = () => (
 export const Movie = ({ id }: { id: MovieEntity['id'] }) => {
   const { movie, isLoading } = useMovie(id);
   const { value: selected, nextQuerystring: nextSelectedQuery } =
-    useToggleQuerystringValue('selected');
+    useToggleQuerystringValue(SELECTED_MOVIE_ID_QUERYSTRING_KEY);
 
   const isMdAndUp = useMdAndUpBreakpoint();
 
