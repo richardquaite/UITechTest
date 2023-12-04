@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 coverage
 docker-compose.debug.yml
+stats.json
 
 node_modules
 dist
