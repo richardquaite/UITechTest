@@ -3,7 +3,7 @@ type Entity = {
 };
 
 type MovieCompany = { name: string };
-interface MovieCompanyEntity extends MovieCompany, Entity {}
+type MovieCompanyEntity = Entity & MovieCompany;
 
 type Movie = {
   reviews: number[];
@@ -12,4 +12,9 @@ type Movie = {
   cost: number;
   releaseYear: number;
 };
-interface MovieEntity extends Movie, Entity {}
+type MovieEntity = Entity & Movie;
+
+type ExtendedMovieEntity = MovieEntity & {
+  filmCompany: MovieCompanyEntity | null;
+  averageReviewScore: number;
+};

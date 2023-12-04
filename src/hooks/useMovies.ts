@@ -6,11 +6,6 @@ import {
 import { useSortQuerystring } from '@/src/hooks/useSortQuerystring';
 import { getAverage } from '@/src/lib/getAverage';
 
-type ExtendedMovie = MovieEntity & {
-  filmCompany: MovieCompanyEntity | undefined;
-  averageReviewScore: number;
-};
-
 export const useMovies = () => {
   const { sort } = useSortQuerystring();
 
@@ -34,15 +29,16 @@ export const useMovies = () => {
   const isFetching = isMoviesFetching || isMovieCompaniesFetching;
   const isError = isMoviesError || isMovieCompaniesError;
 
-  const moviesData: ExtendedMovie[] = useMemo(
+  const moviesData: ExtendedMovieEntity[] = useMemo(
     () =>
       movies && movieCompanies
         ? movies.map((movie) => {
             return {
               ...movie,
-              filmCompany: movieCompanies.find(
-                (movieCompany) => movieCompany.id === movie.filmCompanyId
-              ),
+              filmCompany:
+                movieCompanies.find(
+                  (movieCompany) => movieCompany.id === movie.filmCompanyId
+                ) ?? null,
               averageReviewScore: getAverage(movie.reviews),
             };
           })
