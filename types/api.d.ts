@@ -13,8 +13,3 @@ type Movie = {
   releaseYear: number;
 };
 type MovieEntity = Entity & Movie;
-
-type ExtendedMovieEntity = MovieEntity & {
-  filmCompany: MovieCompanyEntity | null;
-  averageReviewScore: number;
-};
