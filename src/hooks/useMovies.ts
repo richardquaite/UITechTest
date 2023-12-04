@@ -51,8 +51,8 @@ export const useMovies = () => {
       sort === 'asc'
         ? a.averageReviewScore - b.averageReviewScore
         : sort === 'desc'
-        ? b.averageReviewScore - a.averageReviewScore
-        : Number(a.id) - Number(b.id)
+          ? b.averageReviewScore - a.averageReviewScore
+          : Number(a.id) - Number(b.id)
     );
   }, [sort, moviesData]);
 

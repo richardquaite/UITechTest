@@ -23,5 +23,5 @@
     }
   },
   "include": ["src", "./types/api.d.ts", "./types/app.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

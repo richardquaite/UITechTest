@@ -1,10 +1,10 @@
 module.exports = {
-    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-    parser: '@typescript-eslint/parser',
-    plugins: ['@typescript-eslint'],
-    root: true,
-    globals: {
-        module: 'readonly',
-        __dirname: 'readonly',
-    },
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  root: true,
+  globals: {
+    module: 'readonly',
+    __dirname: 'readonly',
+  },
 };
