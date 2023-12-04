@@ -15,7 +15,8 @@
     "storybook:run": "storybook dev -s public -p 3002",
     "storybook:build": "storybook build",
     "docker:build": "docker build -t optix-tech-test .",
-    "docker:start": "docker run -p 3001:3001 optix-tech-test",
+    "docker:build:nocache": "docker build --no-cache -t optix-tech-test .",
+    "docker:start": "docker-compose up",
     "prepare": "husky install"
   },
   "dependencies": {
