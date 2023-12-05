@@ -44,17 +44,17 @@ describe('Movie', () => {
     );
   });
 
-  test(`It displays the movie title (${movie!.title})`, async () => {
+  test(`It displays the movie title (${movie.title})`, async () => {
     const { getByText } = render(<Movie id={movie.id} />, { wrapper: Wrapper });
 
-    await waitFor(() => expect(getByText(movie!.title)).toBeInTheDocument());
+    await waitFor(() => expect(getByText(movie.title)).toBeInTheDocument());
   });
 
   test('It displays the movie rating', async () => {
     const { getByText } = render(<Movie id={movie.id} />, { wrapper: Wrapper });
 
     await waitFor(() =>
-      expect(getByText(getAverage(movie!.reviews))).toBeInTheDocument()
+      expect(getByText(getAverage(movie.reviews))).toBeInTheDocument()
     );
   });
 
