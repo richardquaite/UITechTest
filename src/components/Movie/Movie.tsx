@@ -78,7 +78,9 @@ export const Movie = ({ id }: { id: MovieEntity['id'] }) => {
                 max={10}
                 size={isMdAndUp ? 'medium' : 'small'}
               />
-              <Typography>{movie.averageReviewScore}</Typography>
+              <Typography>
+                {movie.averageReviewScore.toLocaleString()}
+              </Typography>
             </>
           ) : (
             'No reviews'
